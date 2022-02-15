@@ -11,7 +11,7 @@ export class ApiserviceService {
   constructor(private http: HttpClient){}
 
   try(): Observable<any> {
-    return this.http.get('http://localhost:3000/getsactor');
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsactor');
   }
 
 
