@@ -10,7 +10,11 @@ export class ApiserviceService {
 
   constructor(private http: HttpClient){}
 
-  try(): Observable<any> {
+  getsactor(): Observable<any> {
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsactor');
+  }
+
+  getspelicula(): Observable<any> {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsactor');
   }
 

@@ -13,6 +13,25 @@
     </ion-toolbar>
   </ion-header>
 
+
+  <ion-card>
+    <ion-card-header *ngFor="let item of allmovies">
+
+      <ion-card-subtitle>Pelicula: </ion-card-subtitle>
+      <ion-card-title>{{ item.Nombre }}</ion-card-title>
+
+        <ion-card-header>
+            Sus generos son: {{ item.idActor }}
+        </ion-card-header>
+          <ion-item>
+            <ion-button fill="outline" slot="end">Ver</ion-button>
+          </ion-item>
+
+    </ion-card-header>
+  </ion-card>
+
+
+
   <ion-tabs>
     <ion-tab-bar slot="bottom">
 
@@ -33,10 +52,8 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-
-
-
-  <div id="container">
-    <p>Estos son los actores online: </p>{{resultado}}
-  </div>
 </ion-content>
+
+
+
+

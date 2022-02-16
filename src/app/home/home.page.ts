@@ -1,6 +1,7 @@
 import { ApiserviceService } from './../apiservice.service';
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -11,18 +12,30 @@ import { Router } from '@angular/router';
 
 
 
-export class HomePage {
+export class HomePage implements OnInit{
+  allmovies: any;
   resultado: any;
   constructor(
     private service: ApiserviceService,
     private route: Router
     ) {
-      this.service.try().subscribe(
+      this.service.getsactor().subscribe(
         (respuesta) =>{
           this.resultado = JSON.stringify(respuesta);
         }
       );
 
+  }
+
+  ngOnInit(): void {
+
+    this.getPelis();
+  }
+
+  getPelis() {
+    this.service.getspelicula().subscribe((data: any) => {
+      this.allmovies = data;
+    });
   }
 
   movies() {
