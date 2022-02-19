@@ -15,7 +15,7 @@ export class ApiserviceService {
   }
 
   getspelicula(): Observable<any> {
-    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsactor');
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getspelicula');
   }
 
 

@@ -19,16 +19,25 @@ export class HomePage implements OnInit{
     private service: ApiserviceService,
     private route: Router
     ) {
-      this.service.getsactor().subscribe(
+      this.service.getspelicula().subscribe(
         (respuesta) =>{
           this.resultado = JSON.stringify(respuesta);
         }
       );
+    }
 
-  }
+
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  option = {
+    slidesPerView: 1.5,
+    centeredslides: true,
+    loop: true,
+    spaceBetween: 5,
+    // autoplay:true,
+  };
 
   ngOnInit(): void {
-
     this.getPelis();
   }
 
@@ -49,6 +58,7 @@ export class HomePage implements OnInit{
   tickets() {
     this.route.navigate(['/tickets']);
   }
+
 
 
 }
