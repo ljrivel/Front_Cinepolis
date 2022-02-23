@@ -1,6 +1,7 @@
-import { ApiserviceService } from './../apiservice.service';
 import { Component,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { LoginPage } from '../pages/login/login.page';
+import { RegisterPage } from '../pages/register/register.page';
 
 
 
@@ -13,52 +14,38 @@ import { Router } from '@angular/router';
 
 
 export class HomePage implements OnInit{
-  allmovies: any;
-  resultado: any;
+
   constructor(
-    private service: ApiserviceService,
-    private route: Router
+    public modalCtrl: ModalController,
     ) {
-      this.service.getspelicula().subscribe(
-        (respuesta) =>{
-          this.resultado = JSON.stringify(respuesta);
-        }
-      );
+
+    }
+
+  ngOnInit(): void {
     }
 
 
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  option = {
-    slidesPerView: 1.5,
-    centeredslides: true,
-    loop: true,
-    spaceBetween: 5,
-    // autoplay:true,
-  };
-
-  ngOnInit(): void {
-    this.getPelis();
-  }
-
-  getPelis() {
-    this.service.getspelicula().subscribe((data: any) => {
-      this.allmovies = data;
+  async login() {
+    const modal = await this.modalCtrl.create({
+      component: LoginPage,
+      animated: true,
+      mode: 'md',
+      backdropDismiss: false,
+      cssClass: 'login-modal',
     });
+
+    return await modal.present();
   }
 
-  movies() {
-    this.route.navigate(['/home']);
+  async register() {
+    const modal = await this.modalCtrl.create({
+      component: RegisterPage,
+      animated: true,
+      mode: 'ios',
+      backdropDismiss: false,
+      cssClass: 'register-modal',
+    });
+
+    return await modal.present();
   }
-
-  login() {
-    this.route.navigate(['/login']);
-  }
-
-  tickets() {
-    this.route.navigate(['/tickets']);
-  }
-
-
-
 }

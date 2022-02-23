@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiserviceService } from '../../apiservice.service';
+import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ApiserviceService } from './../../apiservice.service';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +10,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private service: ApiserviceService,
-    private route: Router
-  ) { }
-
+  constructor(public modalCtrl: ModalController,) {
+   }
   ngOnInit() {
   }
 
-  movies() {
-    this.route.navigate(['/home']);
+  login(){
+
   }
 
-  login() {
-    this.route.navigate(['/login']);
-  }
-
-  tickets() {
-    this.route.navigate(['/tickets']);
+  async dismiss() {
+    await this.modalCtrl.dismiss();
   }
 
 }

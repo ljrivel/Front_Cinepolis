@@ -12,12 +12,36 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'principal',
+    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
+  },
+  {
+    path: 'comida',
+    loadChildren: () => import('./pages/comida/comida.module').then( m => m.ComidaPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'pelicula',
+    loadChildren: () => import('./pages/pelicula/pelicula.module').then( m => m.PeliculaPageModule)
+  },
+  {
+    path: 'comprar',
+    loadChildren: () => import('./pages/comprar/comprar.module').then( m => m.ComprarPageModule)
+  },
+  {
+    path: 'compra-comida',
+    loadChildren: () => import('./pages/compra-comida/compra-comida.module').then( m => m.CompraComidaPageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'tickets',
-    loadChildren: () => import('./pages/tickets/tickets.module').then( m => m.TicketsPageModule)
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
 ];
 

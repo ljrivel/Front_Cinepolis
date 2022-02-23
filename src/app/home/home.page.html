@@ -1,69 +1,20 @@
+<ion-header>
 
-
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Inicio
-    </ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding ion-text-center" color="primary">
+    <img src="../../assets/icon/TucanCodeB.png" class="logo" />
 
+    <div class="title">
+        <h2>Bienvenid@s</h2>
+        <p>Cinepolis su mejor opcion</p>
+    </div>
 
-  <ion-slides  [options]="option"  class="ion-margin-top">
-
-    <ion-slide *ngFor="let item of allmovies">
-
-      <ion-card>
-        <img src={{item.URL}}>
-
-        <ion-card-header >
-
-          <ion-card-subtitle>Pelicula: </ion-card-subtitle>
-          <ion-card-title>{{ item.Titulo }}</ion-card-title>
-
-            <ion-card-header>
-                Sus generos son: {{ item.Director }}
-            </ion-card-header>
-
-        </ion-card-header>
-      </ion-card>
-
-    </ion-slide>
-
-  </ion-slides>
-
-
-  <ion-tabs >
-    <ion-tab-bar slot="bottom">
-
-      <ion-tab-button tab="schedule" (click)="tickets()">
-        <ion-icon name="ticket"></ion-icon>
-        <ion-label>Tickets</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="Movies" (click)="movies()">
-        <ion-icon name="videocam"></ion-icon>
-        <ion-label>Movies</ion-label>
-      </ion-tab-button>
-
-
-      <ion-tab-button tab="Login" (click)="login()">
-        <ion-icon name="person-circle"></ion-icon>
-        <ion-label>Login</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-
-
+    <div class="ion-margin-top">
+        <ion-button expand="block" class="ion-margin-top" (click)="register()" fill="outline" color="white">REGISTRARSE</ion-button>
+        <ion-button expand="block" class="ion-margin-top" (click)="login()" color="white">INICIAR SESION</ion-button>
+    </div>
 </ion-content>
-
 
 
 
