@@ -1,7 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { LoginPage } from '../pages/login/login.page';
-import { RegisterPage } from '../pages/register/register.page';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +14,7 @@ import { RegisterPage } from '../pages/register/register.page';
 export class HomePage implements OnInit{
 
   constructor(
-    public modalCtrl: ModalController,
+    private route: Router
     ) {
 
     }
@@ -25,27 +23,11 @@ export class HomePage implements OnInit{
     }
 
 
-  async login() {
-    const modal = await this.modalCtrl.create({
-      component: LoginPage,
-      animated: true,
-      mode: 'md',
-      backdropDismiss: false,
-      cssClass: 'login-modal',
-    });
-
-    return await modal.present();
+  login() {
+    this.route.navigate(['/login']);
   }
 
-  async register() {
-    const modal = await this.modalCtrl.create({
-      component: RegisterPage,
-      animated: true,
-      mode: 'ios',
-      backdropDismiss: false,
-      cssClass: 'register-modal',
-    });
-
-    return await modal.present();
+  register() {
+    this.route.navigate(['/register']);
   }
 }

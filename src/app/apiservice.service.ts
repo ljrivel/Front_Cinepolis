@@ -18,6 +18,12 @@ export class ApiserviceService {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getspelicula');
   }
 
+  createUser(user: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertUsuario', user);
+  }
 
+  login(user: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/Login', user);
+  }
 
 }
