@@ -5,7 +5,7 @@
 
     <ion-slide *ngFor="let item of allmovies">
 
-      <ion-card >
+      <ion-card  [routerLink]="['/pelicula',item.Titulo]">
         <img src={{item.URL}}>
 
         <ion-card-header >
@@ -13,11 +13,6 @@
               <ion-card-subtitle>Pelicula: </ion-card-subtitle>
               <ion-card-title>{{ item.Titulo }}</ion-card-title>
                 Sus generos son: {{ item.Director }}
-                <ion-item>
-                  <ion-button slot="end" fill="outline">
-                    Ver
-                  </ion-button>
-                </ion-item>
             </ion-card-header>
 
         </ion-card-header>
@@ -30,22 +25,22 @@
 
 
 
- 
+
   <ion-tabs >
     <ion-tab-bar slot="bottom">
 
-      <ion-tab-button tab="schedule" (click)="comida()">
+      <ion-tab-button  (click)="comida()">
         <ion-icon name="ticket"></ion-icon>
         <ion-label>Comidas</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="Movies" (click)="principal()">
+      <ion-tab-button (click)="principal()">
         <ion-icon name="videocam"></ion-icon>
         <ion-label>Peliculas</ion-label>
       </ion-tab-button>
 
 
-      <ion-tab-button tab="Login" (click)="perfil()">
+      <ion-tab-button  (click)="perfil()">
         <ion-icon name="person-circle"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-tab-button>

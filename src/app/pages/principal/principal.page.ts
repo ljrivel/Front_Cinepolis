@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
-import { NavController,NavParams } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-principal',
@@ -34,7 +34,6 @@ export class PrincipalPage implements OnInit {
     ngOnInit(): void {
       this.getPelis();
       this.currentUser = JSON.parse(localStorage.getItem('user'));
-      console.log(this.currentUser);
     }
 
     getPelis() {

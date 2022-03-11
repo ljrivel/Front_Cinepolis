@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
 
 @Component({
@@ -8,15 +8,18 @@ import { ApiserviceService } from './../../apiservice.service';
   styleUrls: ['./pelicula.page.scss'],
 })
 export class PeliculaPage implements OnInit {
+  movieName: any;
 
   constructor(
     private service: ApiserviceService,
-    private route: Router
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
 
   }
 
   ngOnInit() {
+    this.movieName = this.activatedRoute.snapshot.paramMap.get('name');
   }
 
 
