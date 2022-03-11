@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController,NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,12 @@ export class LoginPage implements OnInit {
       (data) => {
 
         if(data == true){
+
+          this.service.getUser(this.loginForm.value).subscribe(
+            (data2) => {
+              this.service.setUser(data2);
+            }
+          );
           this.route.navigate(['/principal']);
         }
         else{

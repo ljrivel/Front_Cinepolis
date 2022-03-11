@@ -57,7 +57,7 @@ export class RegisterPage implements OnInit {
     this.service.createUser(this.registerForm.value).subscribe(
       (data) => {
         this.alertService.success('Registration successful', true);
-        this.route.navigate(['/principal']);
+        this.route.navigate(['/login']);
       },
       (error) => {
         this.alertService.error(error);
