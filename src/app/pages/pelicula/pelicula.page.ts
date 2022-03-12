@@ -8,7 +8,8 @@ import { ApiserviceService } from './../../apiservice.service';
   styleUrls: ['./pelicula.page.scss'],
 })
 export class PeliculaPage implements OnInit {
-  movieName: any;
+  idPelicula: any;
+  movie: any;
 
   constructor(
     private service: ApiserviceService,
@@ -19,12 +20,24 @@ export class PeliculaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.movieName = this.activatedRoute.snapshot.paramMap.get('name');
+    this.idPelicula = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.getPelicula();
+
   }
 
 
   comprar() {
     this.route.navigate(['/comprar-comida']);
+  }
+
+  getPelicula(){
+
+      this.service.getpelicula(this.idPelicula).subscribe((data: any) => {
+        this.movie = data;
+
+      });
+
   }
 
 }

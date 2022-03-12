@@ -5,7 +5,7 @@
 
     <ion-slide *ngFor="let item of allmovies">
 
-      <ion-card  [routerLink]="['/pelicula',item.Titulo]">
+      <ion-card  [routerLink]="['/pelicula',item.idPelicula]">
         <img src={{item.URL}}>
 
         <ion-card-header >

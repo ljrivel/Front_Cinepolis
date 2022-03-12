@@ -24,6 +24,12 @@ export class ApiserviceService {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getspelicula');
   }
 
+  getpelicula(id: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetPelicula',{
+      id,
+    });
+  }
+
   createUser(user: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertUsuario', user);
   }

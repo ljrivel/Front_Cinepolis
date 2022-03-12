@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: 'pelicula/:name',
+    path: 'pelicula/:id',
     loadChildren: () => import('./pages/pelicula/pelicula.module').then( m => m.PeliculaPageModule)
   },
   {
