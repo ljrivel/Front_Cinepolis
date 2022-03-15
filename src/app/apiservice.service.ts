@@ -28,6 +28,7 @@ export class ApiserviceService {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetPelicula',{
       id,
     });
+
   }
 
   createUser(user: any): Observable<any> {

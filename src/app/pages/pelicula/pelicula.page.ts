@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ApiserviceService } from './../../apiservice.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { ApiserviceService } from './../../apiservice.service';
 export class PeliculaPage implements OnInit {
   idPelicula: any;
   movie: any;
+
+
 
   constructor(
     private service: ApiserviceService,
@@ -28,16 +31,20 @@ export class PeliculaPage implements OnInit {
 
 
   comprar() {
-    this.route.navigate(['/comprar-comida']);
+    this.route.navigate(['/cantidad-tickets']);
   }
 
   getPelicula(){
 
       this.service.getpelicula(this.idPelicula).subscribe((data: any) => {
-        this.movie = data;
-
+          this.movie = data;
+          console.log(data);
       });
 
+  }
+
+  cancelar(){
+    this.route.navigate(['/principal']);
   }
 
 }

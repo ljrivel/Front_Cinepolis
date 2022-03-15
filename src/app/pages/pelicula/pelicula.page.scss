@@ -1,0 +1,35 @@
+ion-card {
+  width: 97%;
+  height: 29%;
+  box-shadow: none;
+  border-radius: 12px;
+  img {
+      object-fit: cover;
+      width: 100%;
+      transform: scale(1.1, 1.1) ;
+      transition: 600ms all ease-in-out;
+  }
+}
+
+p{
+  text-align: center;
+}
+
+h1{
+  font-weight: bold;
+  text-align: center;
+}
+
+h3{
+  font-weight: bold;
+  text-align: center;
+}
+
+
+ion-button{
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+
+
