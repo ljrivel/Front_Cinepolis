@@ -31,11 +31,9 @@
     </ion-slides>
 
 
-    <ion-item>
-      <ion-button (click)="agregarComida()" *ngIf="ocultar">Agregar Comida</ion-button>
+    <ion-item *ngIf="ocultar">
+      <ion-button (click)="agregarComida()" >Agregar Comida</ion-button>
     </ion-item>
-
-
 
 
     <ion-tabs >
@@ -51,10 +49,14 @@
           <ion-label>Peliculas</ion-label>
         </ion-tab-button>
 
-
-        <ion-tab-button  (click)="perfil()">
+        <ion-tab-button  (click)="perfil()" *ngIf="!ocultar">
           <ion-icon name="person-circle"></ion-icon>
           <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button  (click)="clientes()" *ngIf="ocultar">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Clientes</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

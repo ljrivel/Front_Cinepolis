@@ -6,14 +6,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
 
 @Component({
-  selector: 'app-pelicula',
-  templateUrl: './pelicula.page.html',
-  styleUrls: ['./pelicula.page.scss'],
+  selector: 'app-infocomida',
+  templateUrl: './infocomida.page.html',
+  styleUrls: ['./infocomida.page.scss'],
 })
-export class PeliculaPage implements OnInit {
+export class InfocomidaPage implements OnInit {
   currentUser: any;
-  idPelicula: any;
-  movie: any;
+  idComida: any;
+  comida: any;
+  tipoComida: any;
   ocultar = false;
 
 
@@ -27,9 +28,9 @@ export class PeliculaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.idPelicula = this.activatedRoute.snapshot.paramMap.get('id');
+    this.idComida = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.getPelicula();
+    this.getComida();
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     if ((this.currentUser[0]['TipoUsuario']) == '0'){
       this.ocultar = true;
@@ -39,19 +40,18 @@ export class PeliculaPage implements OnInit {
 
 
   comprar() {
-    this.route.navigate(['/cantidad-tickets',this.idPelicula]);
+    this.route.navigate(['/antidacomida',this.idComida]);
   }
 
-  getPelicula(){
-
-      this.service.getpelicula(this.idPelicula).subscribe((data: any) => {
-          this.movie = data;
+  getComida(){
+      this.service.getpelicula(this.idComida).subscribe((data: any) => {
+          this.comida = data;
       });
 
   }
 
   cancelar(){
-    this.route.navigate(['/principal']);
+    this.route.navigate(['/comida']);
   }
 
   eliminar(){
@@ -61,9 +61,8 @@ export class PeliculaPage implements OnInit {
 
   modificar(){
 
-    this.route.navigate(['/modificarpeli',this.idPelicula]);
+    this.route.navigate(['/modificarcomida',this.idComida]);
   }
-
 
 
 

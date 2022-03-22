@@ -21,7 +21,9 @@ export class CrearcomidaPage implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       Nombre: ['', Validators.required],
-
+      idTipoAlimento: ['',Validators.required],
+      CantidadDisponible: ['', Validators.required],
+      Precio: ['',Validators.required],
     });
   }
 

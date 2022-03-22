@@ -1,0 +1,68 @@
+
+
+
+<ion-content class="ion-padding">
+
+  <form >
+  <div class="title">
+    <h4>Modificar Cliente</h4>
+
+  </div>
+
+
+  <div [formGroup]="registerForm">
+
+
+
+    <ion-input placeholder="Nombre " class="primary-input" formControlName="Nombre"> </ion-input>
+    <ion-input placeholder="Primer Apellido" class="primary-input" formControlName="Apellido1" ></ion-input>
+    <ion-input placeholder="Segundo Apellido" class="primary-input" formControlName="Apellido2" ></ion-input>
+
+
+    <ion-item class="primary-input">
+      <ion-input [value]="dateValue2"  placeholder="FechaNacimiento" ></ion-input>
+      <ion-button fill="clear" id="open-date-input-2">
+        <ion-icon icon="calendar"></ion-icon>
+      </ion-button>
+      <ion-popover trigger="open-date-input-2" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            #popoverDatetime2
+            presentation="date"
+            (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+    <ion-input placeholder="Correo" class="primary-input" formControlName="Email" ></ion-input>
+    <ion-item  class="primary-input" >
+      <ion-label >Cantidad Vacunas</ion-label>
+      <ion-select placeholder="Selecciona" formControlName="EsquemaVacunacion" >
+        <ion-select-option value="0" >0</ion-select-option >
+        <ion-select-option value="1" >1</ion-select-option>
+        <ion-select-option value="2" >2</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item  class="primary-input" >
+      <ion-label >Tipo Usuario {{TipoUsuario}}</ion-label>
+      <ion-select placeholder="Selecciona" formControlName="TipoUsuario" >
+        <ion-select-option value="0" >Cliente</ion-select-option >
+        <ion-select-option value="1" >Administrador</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-input placeholder="Cedula"  class="primary-input" formControlName="NumeroCedula" ></ion-input>
+    <ion-input placeholder="Edad" class="primary-input" formControlName="Edad"  ></ion-input>
+    <ion-input placeholder="Password" class="primary-input" formControlName="Password"  ></ion-input>
+
+  </div>
+
+  <div class="ion-margin-top">
+    <ion-button expand="block" (click)="modificar()" >Modificar </ion-button>
+  </div>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Cancelar</a>
+  </div>
+
+</form>
+</ion-content>

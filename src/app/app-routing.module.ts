@@ -55,6 +55,35 @@ const routes: Routes = [
     path: 'crearcomida',
     loadChildren: () => import('./pages/crearcomida/crearcomida.module').then( m => m.CrearcomidaPageModule)
   },
+  {
+    path: 'modificarpeli/:id',
+    loadChildren: () => import('./pages/modificarpeli/modificarpeli.module').then( m => m.ModificarpeliPageModule)
+  },
+  {
+    path: 'modificarcomida/:id',
+    loadChildren: () => import('./pages/modificarcomida/modificarcomida.module').then( m => m.ModificarcomidaPageModule)
+  },
+  {
+    path: 'infocomida/:id',
+    loadChildren: () => import('./pages/infocomida/infocomida.module').then( m => m.InfocomidaPageModule)
+  },
+  {
+    path: 'cantidacomida',
+    loadChildren: () => import('./pages/cantidacomida/cantidacomida.module').then( m => m.CantidacomidaPageModule)
+  },
+  {
+    path: 'clientes',
+    loadChildren: () => import('./pages/clientes/clientes.module').then( m => m.ClientesPageModule)
+  },
+  {
+    path: 'crearclientes',
+    loadChildren: () => import('./pages/crearclientes/crearclientes.module').then( m => m.CrearclientesPageModule)
+  },
+  {
+    path: 'modificar-cliente/:id',
+    loadChildren: () => import('./pages/modificar-cliente/modificar-cliente.module').then( m => m.ModificarClientePageModule)
+  },
+
 ];
 
 @NgModule({

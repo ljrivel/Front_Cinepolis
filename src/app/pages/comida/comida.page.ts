@@ -34,7 +34,7 @@ export class ComidaPage implements OnInit {
       };
 
   comprar() {
-    this.route.navigate(['/compra-comida']);
+    this.route.navigate(['/compra-comida',0]);
   }
 
   principal() {

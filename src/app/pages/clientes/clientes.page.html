@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides  [options]="option"  class="ion-margin-top" >
+
+    <ion-slide *ngFor="let item of allClientes">
+
+      <ion-card >
+        <ion-card-header >
+            <ion-card-header>
+              <ion-card-subtitle>Cliente: </ion-card-subtitle>
+              <ion-card-title>{{ item.Nombre }} {{item.Apellido1}} {{item.Apellido2}}</ion-card-title>
+              <ion-card-subtitle>Edad: {{ item.Edad }} </ion-card-subtitle>
+              <ion-card-subtitle>Nacido en: {{fecha}}</ion-card-subtitle>
+              <ion-card-subtitle>Email: {{item.Email}}</ion-card-subtitle>
+              <ion-card-subtitle>Cantidad Vacunas: {{item.EsquemaVacunacion}}</ion-card-subtitle>
+            </ion-card-header>
+
+              <ion-button (click)="eliminar()" size="small">Eliminar Cliente</ion-button>
+
+              <ion-button (click)="modificarCliente(item.idUsuario)" size="small">Modificar Cliente</ion-button>
+
+        </ion-card-header>
+      </ion-card>
+
+
+    </ion-slide>
+
+  </ion-slides>
+
+
+  <ion-item >
+    <ion-button (click)="agregarCliente()" >Agregar Cliente</ion-button>
+  </ion-item>
+
+
+
+
+  <ion-tabs >
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button  (click)="comida()">
+        <ion-icon name="ticket"></ion-icon>
+        <ion-label>Comidas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="principal()">
+        <ion-icon name="videocam"></ion-icon>
+        <ion-label>Peliculas</ion-label>
+      </ion-tab-button>
+
+
+
+      <ion-tab-button  (click)="clientes()" >
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Clientes</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

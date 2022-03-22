@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComprarPage implements OnInit {
 
+  color = 'seat';
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  p(a: any){
+    if(a == 'seat'){
+      this.color = 'seat selected';
+      this.ngOnInit();
+    }
+    else if(a == 'seat selected'){
+      this.color = 'seat';
+      this.ngOnInit();
+    }
+
+  }
+
+
 
 }

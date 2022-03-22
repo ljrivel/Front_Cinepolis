@@ -9,18 +9,13 @@ import { AlertService } from './../../alert.service';
 import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
 
-
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-crearclientes',
+  templateUrl: './crearclientes.page.html',
+  styleUrls: ['./crearclientes.page.scss'],
 })
-
-
-export class RegisterPage implements OnInit {
+export class CrearclientesPage implements OnInit {
   registerForm: FormGroup;
-
   datevalue = '';
   dateValue2 = '';
   submitted = false;
@@ -36,10 +31,11 @@ export class RegisterPage implements OnInit {
       Nombre: ['', Validators.required],
       Apellido1: ['', Validators.required],
       Apellido2: ['', Validators.required],
-      TipoUsuario: ['1', Validators.required],
+      TipoUsuario: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
       EsquemaVacunacion: ['', Validators.required],
       FechaNacimiento: ['', Validators.required],
+      Password: ['', [Validators.required,Validators.minLength(6)]],
       Edad: ['', Validators.required],
       Cedula: ['', [Validators.required,Validators.minLength(9)]],
     });
@@ -60,7 +56,7 @@ export class RegisterPage implements OnInit {
   }
 
   dismiss() {
-    this.route.navigate(['/home']);
+    this.route.navigate(['/clientes']);
   }
 
   formatDate(value: string) {
@@ -68,4 +64,5 @@ export class RegisterPage implements OnInit {
     this.registerForm.controls['FechaNacimiento'].setValue(this.datevalue);
     return format(parseISO(value), 'MMM dd yyyy');
   }
+
 }

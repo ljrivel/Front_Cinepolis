@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,Subject } from 'rxjs';
@@ -39,7 +40,13 @@ export class ApiserviceService {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/Login', user);
   }
 
-  getUser(user: any): Observable<any> {
-    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetUser', user);
+  getUser(Usuario: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetUser', {
+      Usuario
+    });
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/GetUsers');
   }
 }

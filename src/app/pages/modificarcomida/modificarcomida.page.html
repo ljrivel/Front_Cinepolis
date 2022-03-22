@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>crearcomida</ion-title>
+    <ion-title>Modificar Comida</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
     <ion-input placeholder="Precio producto " class="primary-input" formControlName="Precio" > </ion-input>
     <ion-item  class="primary-input" >
       <ion-label >Tipo Comida</ion-label>
-      <ion-select placeholder="Selecciona" formControlName="EsquemaVacunacion" >
+      <ion-select placeholder="Selecciona" formControlName="idTipoAlimento" >
         <ion-select-option value="0" >Combo</ion-select-option >
         <ion-select-option value="1" >Bebida</ion-select-option>
         <ion-select-option value="2" >Alimento</ion-select-option>
@@ -21,10 +21,9 @@
     </ion-item>
 
 
-      <ion-button>Cancelar</ion-button>
+      <ion-button (click)="cancelar()"> Cancelar</ion-button>
       <ion-button [disabled]="!registerForm.valid" >Crear</ion-button>
 
   </div>
-
 
 </ion-content>

@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { ApiserviceService } from './../../apiservice.service';
 
 
@@ -14,17 +15,15 @@ import { ApiserviceService } from './../../apiservice.service';
 export class PrincipalPage implements OnInit {
     currentUser: any;
     allmovies: any;
+    prueba: any;
     resultado: any;
     ocultar = false;
+    flag = false;
     constructor(
       private service: ApiserviceService,
       private route: Router
       ) {
-        this.service.getspelicula().subscribe(
-          (respuesta) =>{
-            this.resultado = JSON.stringify(respuesta);
-          }
-        );
+
       }
     // eslint-disable-next-line @typescript-eslint/member-ordering
     option = {
@@ -41,12 +40,18 @@ export class PrincipalPage implements OnInit {
       if ((this.currentUser[0]['TipoUsuario']) == '0'){
         this.ocultar = true;
       }
+      if(this.flag == false){
+        this.flag = true;
+        this.ngOnInit();
+      }
+
     }
 
     getPelis() {
       this.service.getspelicula().subscribe((data: any) => {
         this.allmovies = data;
       });
+
     }
 
     principal() {
@@ -61,6 +66,10 @@ export class PrincipalPage implements OnInit {
       this.route.navigate(['/comida']);
     }
 
+    clientes() {
+      this.route.navigate(['/clientes']);
+    }
+
     pelicula(idPelicula: any){
       this.route.navigate(['/pelicula',idPelicula]);
     }
@@ -68,5 +77,6 @@ export class PrincipalPage implements OnInit {
     agregarPelicula(){
       this.route.navigate(['/crearpelicula']);
     }
+
 
 }
