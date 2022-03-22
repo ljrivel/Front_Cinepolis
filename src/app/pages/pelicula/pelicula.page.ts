@@ -31,14 +31,13 @@ export class PeliculaPage implements OnInit {
 
 
   comprar() {
-    this.route.navigate(['/cantidad-tickets']);
+    this.route.navigate(['/cantidad-tickets',this.idPelicula]);
   }
 
   getPelicula(){
 
       this.service.getpelicula(this.idPelicula).subscribe((data: any) => {
           this.movie = data;
-          console.log(data);
       });
 
   }

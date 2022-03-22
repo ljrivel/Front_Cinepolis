@@ -11,11 +11,11 @@
 
     <div [formGroup]="loginForm">
 
-      <ion-input placeholder="Email" class="primary-input" formControlName="Usuario"  ></ion-input>
+      <ion-input placeholder="Email" class="primary-input" formControlName="Usuario" ></ion-input>
       <ion-input placeholder="Contraseña" type="password" class="primary-input" formControlName="Password" ></ion-input>
 
       <div class="ion-margin-top">
-        <ion-button expand="block" (click)="login()">INICIAR SESION</ion-button>
+        <ion-button expand="block" (click)="login()"  [disabled]="!loginForm.valid">INICIAR SESION</ion-button>
       </div>
 
       <div class="ion-margin-top ion-text-center">

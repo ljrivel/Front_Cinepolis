@@ -44,8 +44,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'cantidad-tickets',
+    path: 'cantidad-tickets/:id',
     loadChildren: () => import('./pages/cantidad-tickets/cantidad-tickets.module').then( m => m.CantidadTicketsPageModule)
+  },
+  {
+    path: 'crearpelicula',
+    loadChildren: () => import('./pages/crearpelicula/crearpelicula.module').then( m => m.CrearpeliculaPageModule)
+  },
+  {
+    path: 'crearcomida',
+    loadChildren: () => import('./pages/crearcomida/crearcomida.module').then( m => m.CrearcomidaPageModule)
   },
 ];
 

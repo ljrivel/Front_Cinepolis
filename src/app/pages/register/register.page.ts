@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from './../../alert.service';
 import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
+
 
 
 @Component({
@@ -39,12 +41,11 @@ export class RegisterPage implements OnInit {
       Apellido1: ['', Validators.required],
       Apellido2: ['', Validators.required],
       TipoUsuario: ['1', Validators.required],
-      Password: ['', [Validators.required, Validators.minLength(6)]],
       Email: ['', [Validators.required, Validators.email]],
       EsquemaVacunacion: ['', Validators.required],
       FechaNacimiento: ['', Validators.required],
       Edad: ['', Validators.required],
-      Cedula: ['', Validators.required],
+      Cedula: ['', [Validators.required,Validators.minLength(9)]],
     });
   }
 
@@ -71,6 +72,7 @@ export class RegisterPage implements OnInit {
 
   formatDate(value: string) {
     this.datevalue = value;
+    this.registerForm.controls['FechaNacimiento'].setValue(this.datevalue);
     return format(parseISO(value), 'MMM dd yyyy');
   }
 }

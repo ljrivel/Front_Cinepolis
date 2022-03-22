@@ -1,3 +1,6 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
@@ -12,6 +15,7 @@ export class PrincipalPage implements OnInit {
     currentUser: any;
     allmovies: any;
     resultado: any;
+    ocultar = false;
     constructor(
       private service: ApiserviceService,
       private route: Router
@@ -34,6 +38,9 @@ export class PrincipalPage implements OnInit {
     ngOnInit(): void {
       this.getPelis();
       this.currentUser = JSON.parse(localStorage.getItem('user'));
+      if ((this.currentUser[0]['TipoUsuario']) == '0'){
+        this.ocultar = true;
+      }
     }
 
     getPelis() {
@@ -52,6 +59,14 @@ export class PrincipalPage implements OnInit {
 
     comida() {
       this.route.navigate(['/comida']);
+    }
+
+    pelicula(idPelicula: any){
+      this.route.navigate(['/pelicula',idPelicula]);
+    }
+
+    agregarPelicula(){
+      this.route.navigate(['/crearpelicula']);
     }
 
 }

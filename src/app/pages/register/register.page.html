@@ -14,9 +14,9 @@
 
 
 
-    <ion-input placeholder="Nombre " class="primary-input" formControlName="Nombre" [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }"> </ion-input>
-    <ion-input placeholder="Primer Apellido" class="primary-input" formControlName="Apellido1" [ngClass]="{ 'is-invalid': submitted && f.Apellido1.errors }"></ion-input>
-    <ion-input placeholder="Segundo Apellido" class="primary-input" formControlName="Apellido2" [ngClass]="{ 'is-invalid': submitted && f.Apellido2.errors }"></ion-input>
+    <ion-input placeholder="Nombre " class="primary-input" formControlName="Nombre"> </ion-input>
+    <ion-input placeholder="Primer Apellido" class="primary-input" formControlName="Apellido1" ></ion-input>
+    <ion-input placeholder="Segundo Apellido" class="primary-input" formControlName="Apellido2" ></ion-input>
 
 
     <ion-item class="primary-input">
@@ -34,17 +34,23 @@
         </ng-template>
       </ion-popover>
     </ion-item>
-    <ion-input placeholder="Correo" class="primary-input" formControlName="Email" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"></ion-input>
-    <ion-input placeholder="Cantidad Vacunas" class="primary-input" formControlName="EsquemaVacunacion" [ngClass]="{ 'is-invalid': submitted && f.EsquemaVacunacion.errors }"></ion-input>
-    <ion-input placeholder="Cedula"  class="primary-input" formControlName="Cedula" [ngClass]="{ 'is-invalid': submitted && f.Cedula.errors }"></ion-input>
-    <ion-input placeholder="Edad" class="primary-input" formControlName="Edad" [ngClass]="{ 'is-invalid': submitted && f.Edad.errors }" ></ion-input>
-    <ion-input placeholder="Contraseña" type="password" class="primary-input" formControlName="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"></ion-input>
+    <ion-input placeholder="Correo" class="primary-input" formControlName="Email" ></ion-input>
+    <ion-item  class="primary-input" >
+      <ion-label >Cantidad Vacunas</ion-label>
+      <ion-select placeholder="Selecciona" formControlName="EsquemaVacunacion" >
+        <ion-select-option value="0" >0</ion-select-option >
+        <ion-select-option value="1" >1</ion-select-option>
+        <ion-select-option value="2" >2</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-input placeholder="Cedula"  class="primary-input" formControlName="Cedula" ></ion-input>
+    <ion-input placeholder="Edad" class="primary-input" formControlName="Edad"  ></ion-input>
 
     <p>Al registrarse, acepta nuestros términos y condiciones</p>
   </div>
 
   <div class="ion-margin-top">
-    <ion-button expand="block" (click)="register()">REGISTRARSE </ion-button>
+    <ion-button expand="block" (click)="register()" [disabled]="!registerForm.valid">REGISTRARSE </ion-button>
   </div>
 
   <div class="ion-margin-top ion-text-center">

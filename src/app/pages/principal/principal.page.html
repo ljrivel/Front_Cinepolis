@@ -5,7 +5,7 @@
 
     <ion-slide *ngFor="let item of allmovies">
 
-      <ion-card  [routerLink]="['/pelicula',item.idPelicula]">
+      <ion-card  (click)="pelicula(item.idPelicula)">
         <img src={{item.URL}}>
 
         <ion-card-header >
@@ -16,12 +16,17 @@
             </ion-card-header>
 
         </ion-card-header>
-
       </ion-card>
+
 
     </ion-slide>
 
   </ion-slides>
+
+
+  <ion-item>
+    <ion-button (click)="agregarPelicula()" *ngIf="ocultar">Agregar Pelicula</ion-button>
+  </ion-item>
 
 
 

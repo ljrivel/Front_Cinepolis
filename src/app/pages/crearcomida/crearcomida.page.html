@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>crearcomida</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div [formGroup]="registerForm">
+    <p></p>
+    <ion-input placeholder="Nombre Pelicula " class="primary-input" formControlName="Nombre" > </ion-input>
+      <ion-button>Cancelar</ion-button>
+      <ion-button [disabled]="!registerForm.valid" >Crear</ion-button>
+
+  </div>
+
+
+</ion-content>

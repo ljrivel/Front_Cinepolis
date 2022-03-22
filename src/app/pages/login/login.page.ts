@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController,NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +13,15 @@ import { NavController,NavParams } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
+
   constructor(
     private route: Router,
     private service: ApiserviceService,
     private formBuilder: FormBuilder
     ) {
       this.loginForm = this.formBuilder.group({
-        Usuario: ['', Validators.required,Validators.email],
-        Password : ['',Validators.required]
+        Usuario: ['', [Validators.required,Validators.email]],
+        Password : ['',[Validators.required,Validators.minLength(6)]]
       });
    }
   ngOnInit() {
