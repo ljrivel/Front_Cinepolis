@@ -41,7 +41,7 @@ export class ApiserviceService {
   }
 
   getUser(Usuario: any): Observable<any> {
-    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetUser', {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetUserLogin', {
       Usuario
     });
   }

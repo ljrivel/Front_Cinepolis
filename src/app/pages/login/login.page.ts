@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from './../../apiservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
   constructor(
     private route: Router,
     private service: ApiserviceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public alertController: AlertController,
     ) {
       this.loginForm = this.formBuilder.group({
         Usuario: ['', [Validators.required,Validators.email]],
@@ -38,6 +40,7 @@ export class LoginPage implements OnInit {
               this.service.setUser(data2);
             }
           );
+          this.presentAlert();
           this.route.navigate(['/principal']);
         }
         else{
@@ -52,6 +55,15 @@ export class LoginPage implements OnInit {
   dismiss(){
     this.route.navigate(['/home']);
   }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });}
 
 
 }

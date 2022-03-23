@@ -19,7 +19,7 @@ export class ModificarClientePage implements OnInit {
   registerForm: FormGroup;
   idUsuario: any;
   Usuario: any;
-  TipoUsuario: any;
+  CantidadVacunas: any;
   datevalue = '';
   dateValue2 = '';
   submitted = false;
@@ -60,18 +60,19 @@ export class ModificarClientePage implements OnInit {
   getCliente(){
     this.service.getUser(this.idUsuario).subscribe((data: any) => {
         this.Usuario = data;
-        console.log(data);
         this.registerForm.controls['Nombre'].setValue(data[0].Nombre);
         this.registerForm.controls['Apellido1'].setValue(data[0].Apellido1);
         this.registerForm.controls['Apellido2'].setValue(data[0].Apellido2);
         this.registerForm.controls['TipoUsuario'].setValue(data[0].TipoUsuario);
-        this.TipoUsuario = data[0].TipoUsuario;
         this.registerForm.controls['Email'].setValue(data[0].Email);
         this.registerForm.controls['Apellido2'].setValue(data[0].Apellido2);
         this.registerForm.controls['Password'].setValue(data[0].Password);
-        this.registerForm.controls['Edad'].setValue(this.formatDate(data[0].Edad));
+        this.registerForm.controls['Edad'].setValue(data[0].Edad);
         this.registerForm.controls['NumeroCedula'].setValue(data[0].NumeroCedula);
-        this.registerForm.controls['EsquemaVacunacion'].setValue(this.formatDate(data[0].EsquemaVacunacion));
+        this.registerForm.controls['EsquemaVacunacion'].setValue(data[0].EsquemaVacunacion);
+        this.CantidadVacunas = data[0].EsquemaVacunacion;
+        this.dateValue2 = this.formatDate(data[0].FechaNacimiento);
+
     });
 }
 

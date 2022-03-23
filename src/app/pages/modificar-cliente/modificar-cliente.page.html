@@ -36,7 +36,7 @@
     </ion-item>
     <ion-input placeholder="Correo" class="primary-input" formControlName="Email" ></ion-input>
     <ion-item  class="primary-input" >
-      <ion-label >Cantidad Vacunas</ion-label>
+      <ion-label >Cantidad Vacunas: {{CantidadVacunas}}</ion-label>
       <ion-select placeholder="Selecciona" formControlName="EsquemaVacunacion" >
         <ion-select-option value="0" >0</ion-select-option >
         <ion-select-option value="1" >1</ion-select-option>
@@ -44,7 +44,7 @@
       </ion-select>
     </ion-item>
     <ion-item  class="primary-input" >
-      <ion-label >Tipo Usuario {{TipoUsuario}}</ion-label>
+      <ion-label >Tipo Usuario actual: Cliente </ion-label>
       <ion-select placeholder="Selecciona" formControlName="TipoUsuario" >
         <ion-select-option value="0" >Cliente</ion-select-option >
         <ion-select-option value="1" >Administrador</ion-select-option>

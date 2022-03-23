@@ -40,7 +40,7 @@ export class ClientesPage implements OnInit {
   getClientes() {
     this.service.getUsers().subscribe((data: any) => {
       this.allClientes = data;
-      this.fecha = this.formatDate(data.FechaNacimiento);
+      this.fecha = this.formatDate(data[0].FechaNacimiento);
     });
 
   }
