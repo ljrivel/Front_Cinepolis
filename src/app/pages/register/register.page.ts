@@ -41,14 +41,17 @@ export class RegisterPage implements OnInit {
       EsquemaVacunacion: ['', Validators.required],
       FechaNacimiento: ['', Validators.required],
       Edad: ['', Validators.required],
+      Password: ['1', Validators.required],
       Cedula: ['', [Validators.required,Validators.minLength(9)]],
+      Activo: ['1', Validators.required],
     });
   }
 
 
   register(){
-
-    this.service.createUser(this.registerForm.value).subscribe(
+    const pass = Math.random().toString(36).slice(7);
+    this.registerForm.controls['Password'].setValue(pass);
+    this.service.registerUser(this.registerForm.value).subscribe(
       (data) => {
         this.registerExitoso();
       },
@@ -59,7 +62,9 @@ export class RegisterPage implements OnInit {
   }
 
   dismiss() {
-    this.route.navigate(['/home']);
+    this.route.navigate(['/home']).then(() => {
+      window.location.reload();
+    });
   }
 
   formatDate(value: string) {
@@ -96,7 +101,9 @@ export class RegisterPage implements OnInit {
           cssClass: 'secondary',
           id: 'ok-button',
           handler: (blah) => {
-            this.route.navigate(['/login']);
+            this.route.navigate(['/login']).then(() => {
+              window.location.reload();
+            });
           }
         }
       ]

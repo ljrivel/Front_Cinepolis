@@ -24,10 +24,14 @@ export class HomePage implements OnInit{
 
 
   login() {
-    this.route.navigate(['/login']);
+    this.route.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
 
   register() {
-    this.route.navigate(['/register']);
+    this.route.navigate(['/register']).then(() => {
+      window.location.reload();
+    });
   }
 }

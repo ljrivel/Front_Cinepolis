@@ -37,6 +37,10 @@ export class ApiserviceService {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertUsuario', user);
   }
 
+  registerUser(user: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/registerUsuario', user);
+  }
+
   deleteUser(id: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/deleteUser', {
       id,

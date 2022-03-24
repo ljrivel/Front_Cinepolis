@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable eqeqeq */
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ export class CantidadTicketsPage implements OnInit {
   ticketAdultos = 0;
   ticketAdultosMayor = 0;
   ticketNinos = 0;
+  ocultarNinos = false;
   movie: any;
 
   constructor(
@@ -28,6 +30,7 @@ export class CantidadTicketsPage implements OnInit {
     this.idPelicula = this.activatedRoute.snapshot.paramMap.get('id');
     this.getPelicula();
 
+
   }
 
 
@@ -35,6 +38,10 @@ getPelicula(){
 
     this.service.getpelicula(this.idPelicula).subscribe((data: any) => {
         this.movie = data;
+        if (data[0]['EdadRequerida'] >= 12){
+          this.ocultarNinos = true;
+        }
+
     });
 
 }

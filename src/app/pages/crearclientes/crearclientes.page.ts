@@ -38,6 +38,7 @@ export class CrearclientesPage implements OnInit {
       Password: ['', [Validators.required,Validators.minLength(6)]],
       Edad: ['', Validators.required],
       Cedula: ['', [Validators.required,Validators.minLength(9)]],
+      Activo: ['1', Validators.required],
     });
   }
 

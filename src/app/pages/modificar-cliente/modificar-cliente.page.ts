@@ -45,6 +45,7 @@ export class ModificarClientePage implements OnInit {
       Password: ['', [Validators.required,Validators.minLength(6)]],
       Edad: ['', Validators.required],
       NumeroCedula: ['', [Validators.required,Validators.minLength(9)]],
+      Activo: ['1', [Validators.required,]],
     });
     this.idusuario = this.activatedRoute.snapshot.paramMap.get('id');
     this.getCliente();

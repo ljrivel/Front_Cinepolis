@@ -40,7 +40,13 @@ export class PeliculaPage implements OnInit {
 
 
   comprar() {
-    this.route.navigate(['/cantidad-tickets',this.idPelicula]);
+    if(this.currentUser[0]['Edad'] >= this.movie[0]['EdadRequerida'] && this.currentUser[0]['EsquemaVacunacion'] > 0){
+      this.route.navigate(['/cantidad-tickets',this.idPelicula]);
+    }
+    else{
+        this.notCompra();
+    }
+
   }
 
   getPelicula(){
@@ -93,6 +99,28 @@ export class PeliculaPage implements OnInit {
       cssClass: 'my-custom-class',
       header: 'Pelicula eliminada',
       message: 'Usted sera dirigido a la pagina principal',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/principal']).then(() => {
+              window.location.reload();
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async notCompra() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error',
+      message: 'Usted no cumple con algun requisito para la pelicula',
       buttons: [
         {
           text: 'OK',

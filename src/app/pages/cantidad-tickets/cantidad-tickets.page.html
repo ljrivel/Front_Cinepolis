@@ -18,7 +18,7 @@
       -
     </ion-button>
     <p>
-      Tickets de adulto:{{ticketAdultos}}
+      Tickets de General:{{ticketAdultos}}
     </p>
 
     <ion-button slot="end" fill="outline" (click)="addTicketsAdultos()" >
@@ -40,7 +40,7 @@
     </ion-button>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="!ocultarNinos">
     <ion-button slot="start" fill="outline" (click)="lessTicketsNinos()" >
       -
     </ion-button>
