@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -5,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiserviceService } from './../../apiservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from './../../alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modificar-cliente',
@@ -17,7 +18,7 @@ import { format, parseISO } from 'date-fns';
 export class ModificarClientePage implements OnInit {
 
   registerForm: FormGroup;
-  idUsuario: any;
+  idusuario: any;
   Usuario: any;
   CantidadVacunas: any;
   datevalue = '';
@@ -27,12 +28,13 @@ export class ModificarClientePage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private alertService: AlertService,
     private service: ApiserviceService,
-    private activatedRoute: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute,
+    public alertController: AlertController,) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
+      idUsuario: ['', Validators.required],
       Nombre: ['', Validators.required],
       Apellido1: ['', Validators.required],
       Apellido2: ['', Validators.required],
@@ -44,7 +46,7 @@ export class ModificarClientePage implements OnInit {
       Edad: ['', Validators.required],
       NumeroCedula: ['', [Validators.required,Validators.minLength(9)]],
     });
-    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('id');
+    this.idusuario = this.activatedRoute.snapshot.paramMap.get('id');
     this.getCliente();
   }
 
@@ -54,12 +56,21 @@ export class ModificarClientePage implements OnInit {
   }
 
   modificar(){
-    //
+    this.service.changeUser(this.registerForm.value).subscribe(
+      (data) => {
+        this.modificacionExitoso();
+      },
+      (error) => {
+
+        this.modificacionFallida();
+      }
+    );
   }
 
   getCliente(){
-    this.service.getUser(this.idUsuario).subscribe((data: any) => {
+    this.service.getUser(this.idusuario).subscribe((data: any) => {
         this.Usuario = data;
+        this.registerForm.controls['idUsuario'].setValue(data[0].idUsuario);
         this.registerForm.controls['Nombre'].setValue(data[0].Nombre);
         this.registerForm.controls['Apellido1'].setValue(data[0].Apellido1);
         this.registerForm.controls['Apellido2'].setValue(data[0].Apellido2);
@@ -81,6 +92,46 @@ export class ModificarClientePage implements OnInit {
     this.datevalue = value;
     this.registerForm.controls['FechaNacimiento'].setValue(this.datevalue);
     return format(parseISO(value), 'MMM dd yyyy');
+  }
+
+  async modificacionExitoso() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Modificacion Exitosa',
+      message: 'Usted se dirigira al menu de clientes.',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/clientes']).then(() => {
+              window.location.reload();
+            });
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async modificacionFallida() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Modificaion Fallida',
+      message: 'ha ocurrido un error vuelva a intentarlo',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
   }
 
 

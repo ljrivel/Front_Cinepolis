@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { ApiserviceService } from './../../apiservice.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pelicula',
@@ -22,6 +22,7 @@ export class PeliculaPage implements OnInit {
     private service: ApiserviceService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
+    public alertController: AlertController,
   ) {
 
   }
@@ -55,8 +56,14 @@ export class PeliculaPage implements OnInit {
   }
 
   eliminar(){
-    //this.service
-    this.cancelar();
+    this.service.deletePelicula(this.idPelicula).subscribe(
+      (data) => {
+        this.borradoExitoso();
+      },
+      (error) => {
+        this.borradoFallido();
+      }
+    );
   }
 
   modificar(){
@@ -64,6 +71,44 @@ export class PeliculaPage implements OnInit {
     this.route.navigate(['/modificarpeli',this.idPelicula]);
   }
 
+  async borradoFallido() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Ha ocurrido un error',
+      message: 'Porfavor intentelo denuevo',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async borradoExitoso() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Pelicula eliminada',
+      message: 'Usted sera dirigido a la pagina principal',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/principal']).then(() => {
+              window.location.reload();
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
 
 
 

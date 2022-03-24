@@ -21,7 +21,7 @@
               <ion-card-subtitle>Cantidad Vacunas: {{item.EsquemaVacunacion}}</ion-card-subtitle>
             </ion-card-header>
 
-              <ion-button (click)="eliminar()" size="small">Eliminar Cliente</ion-button>
+              <ion-button (click)="eliminar(item.idUsuario)" size="small">Eliminar Cliente</ion-button>
 
               <ion-button (click)="modificarCliente(item.idUsuario)" size="small">Modificar Cliente</ion-button>
 

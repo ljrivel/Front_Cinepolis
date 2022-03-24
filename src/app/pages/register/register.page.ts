@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiserviceService } from './../../apiservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from './../../alert.service';
 import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -28,8 +28,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private alertService: AlertService,
-    private service: ApiserviceService,) { }
+    private service: ApiserviceService,
+    public alertController: AlertController,) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -50,11 +50,10 @@ export class RegisterPage implements OnInit {
 
     this.service.createUser(this.registerForm.value).subscribe(
       (data) => {
-        this.alertService.success('Registration successful', true);
-        this.route.navigate(['/login']);
+        this.registerExitoso();
       },
       (error) => {
-        this.alertService.error(error);
+        this.registerFallido();
       }
     );
   }
@@ -67,5 +66,42 @@ export class RegisterPage implements OnInit {
     this.datevalue = value;
     this.registerForm.controls['FechaNacimiento'].setValue(this.datevalue);
     return format(parseISO(value), 'MMM dd yyyy');
+  }
+
+  async registerFallido() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Ha ocurrido un error',
+      message: 'Porfavor intentelo denuevo',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async registerExitoso() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Register Exitoso',
+      message: 'Revise su correo para obtener el password de su cuenta',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/login']);
+          }
+        }
+      ]
+    });
+    await alert.present();
+
   }
 }

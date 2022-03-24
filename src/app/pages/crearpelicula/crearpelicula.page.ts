@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/apiservice.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crearpelicula',
@@ -15,7 +16,8 @@ export class CrearpeliculaPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private service: ApiserviceService,) { }
+    private service: ApiserviceService,
+    public alertController: AlertController,) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -27,11 +29,56 @@ export class CrearpeliculaPage implements OnInit {
     });
   }
 
-  try(){
-    console.log(this.registerForm);
+  crear(){
+    this.service.createPelicula(this.registerForm.value).subscribe(
+      (data) => {
+        this.registerExitoso();
+      },
+      (error) => {
+        this.registerFallido();
+      }
+    );
   }
   cancelar(){
     this.route.navigate(['/principal']);
   }
 
+  async registerFallido() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Ha ocurrido un error',
+      message: 'Porfavor intentelo denuevo',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async registerExitoso() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Pelicula agregada',
+      message: 'Usted sera dirigido a la pagina principal',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/principal']).then(() => {
+              window.location.reload();
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
 }

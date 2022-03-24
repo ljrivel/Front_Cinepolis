@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
@@ -35,19 +36,21 @@ export class LoginPage implements OnInit {
 
         if(data == true){
 
-          this.service.getUser(this.loginForm.value).subscribe(
+          this.service.getUserLogin(this.loginForm.value).subscribe(
             (data2) => {
               this.service.setUser(data2);
             }
           );
-          this.presentAlert();
-          this.route.navigate(['/principal']);
+          this.loginExitoso();
+
         }
         else{
+          this.loginFallido();
           console.log('error');
         }
       },
       (error) => {
+        this.loginFallido();
         console.log('error');
       }
     );
@@ -56,14 +59,42 @@ export class LoginPage implements OnInit {
     this.route.navigate(['/home']);
   }
 
-  async presentAlert() {
+  async loginExitoso() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
-    });}
+      header: 'Login Exitoso',
+      message: 'Ha iniciado sesion.',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/principal']);
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async loginFallido() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Login Fallido',
+      message: 'Porfavor verifique los datos',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
+  }
 
 
 }
