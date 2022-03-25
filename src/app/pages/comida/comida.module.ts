@@ -1,3 +1,4 @@
+import { PipesModule } from './../../pipes/pipes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { ComidaPage } from './comida.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ComidaPageRoutingModule
+    ComidaPageRoutingModule,
+    PipesModule
   ],
   declarations: [ComidaPage]
 })

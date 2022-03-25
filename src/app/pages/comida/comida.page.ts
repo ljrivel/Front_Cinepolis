@@ -12,8 +12,10 @@ import { ApiserviceService } from './../../apiservice.service';
 })
 export class ComidaPage implements OnInit {
   ocultar = false;
+  searchTerm: string;
   currentUser: any;
   allcomida: any;
+  textbuscar = '';
   constructor(
     private service: ApiserviceService,
     private route: Router
@@ -54,6 +56,30 @@ export class ComidaPage implements OnInit {
       });
     }
 
+  }
+
+  tipo(type: any,id: any){
+
+    const ID = ((id - 4) / 10 ) ;
+
+    if(type == 0){
+      this.allcomida[ID]['TipoProducto'] = 'Combo';
+      return  'Combo';
+    }
+
+    else if(type == 1){
+      this.allcomida[ID]['TipoProducto'] = 'Bebida';
+
+      return  'Bebida';
+    }
+    else{
+      this.allcomida[ID]['TipoProducto'] = 'Comida';
+      return  'Comida';
+    }
+  }
+
+  buscar( event ){
+    this.textbuscar = event.detail.value;
   }
 
   principal() {
