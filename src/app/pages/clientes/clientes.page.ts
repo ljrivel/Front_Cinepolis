@@ -29,7 +29,7 @@ export class ClientesPage implements OnInit {
   option = {
     slidesPerView: 1.5,
     centeredslides: true,
-    loop: true,
+    //loop: true,
     spaceBetween: 5,
     // autoplay:true,
   };

@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cantidacomida</ion-title>
+    <ion-title>Cantidad de Producto a Comprar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let item of producto" >
+    <img src={{item.URL}}>
+  </ion-card>
+
+  <p></p>
+  <ion-item>
+    <ion-button slot="start" fill="outline" (click)="less()">
+      -
+    </ion-button>
+    <p>
+      Cantidad:{{cantidad}}
+    </p>
+
+    <ion-button slot="end" fill="outline" (click)="add()" >
+      +
+    </ion-button>
+  </ion-item>
+
 
 </ion-content>

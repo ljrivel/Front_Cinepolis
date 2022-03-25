@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/comprar/comprar.module').then( m => m.ComprarPageModule)
   },
   {
-    path: 'compra-comida',
+    path: 'compra-comida/:id',
     loadChildren: () => import('./pages/compra-comida/compra-comida.module').then( m => m.CompraComidaPageModule)
   },
   {
@@ -68,7 +68,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/infocomida/infocomida.module').then( m => m.InfocomidaPageModule)
   },
   {
-    path: 'cantidacomida',
+    path: 'cantidacomida/:id',
     loadChildren: () => import('./pages/cantidacomida/cantidacomida.module').then( m => m.CantidacomidaPageModule)
   },
   {
@@ -82,6 +82,14 @@ const routes: Routes = [
   {
     path: 'modificar-cliente/:id',
     loadChildren: () => import('./pages/modificar-cliente/modificar-cliente.module').then( m => m.ModificarClientePageModule)
+  },
+  {
+    path: 'seleccionaragregar',
+    loadChildren: () => import('./pages/seleccionaragregar/seleccionaragregar.module').then( m => m.SeleccionaragregarPageModule)
+  },
+  {
+    path: 'agregar-cartelera/:id',
+    loadChildren: () => import('./pages/agregar-cartelera/agregar-cartelera.module').then( m => m.AgregarCarteleraPageModule)
   },
 
 ];

@@ -26,6 +26,14 @@ export class ApiserviceService {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getspelicula');
   }
 
+  getsCartelera(): Observable<any> {
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getcartelera');
+  }
+
+  getscomida(): Observable<any> {
+    return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsproducto');
+  }
+
   getpelicula(id: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetPelicula',{
       id,
@@ -33,6 +41,12 @@ export class ApiserviceService {
 
   }
 
+  getproducto(Usuario: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/getproducto',{
+      Usuario,
+    });
+
+  }
   createUser(user: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertUsuario', user);
   }
@@ -53,8 +67,18 @@ export class ApiserviceService {
     });
   }
 
+  deleteProducto(Usuario: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/deleteproducto', {
+      Usuario,
+    });
+  }
+
   changeUser(data: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/changeUser',data);
+  }
+
+  changeProducto(data: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/changeproducto',data);
   }
 
   changePelicula(data: any): Observable<any> {
@@ -63,6 +87,10 @@ export class ApiserviceService {
 
   createPelicula(user: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertpelicula', user);
+  }
+
+  createProducto(user: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/insertproducto', user);
   }
 
   login(user: any): Observable<any> {

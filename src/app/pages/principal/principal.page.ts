@@ -15,7 +15,7 @@ import { ApiserviceService } from './../../apiservice.service';
 export class PrincipalPage implements OnInit {
     currentUser: any;
     allmovies: any;
-    prueba: any;
+    allcartelera: any;
     resultado: any;
     ocultar = false;
     flag = false;
@@ -29,21 +29,20 @@ export class PrincipalPage implements OnInit {
     option = {
       slidesPerView: 1.5,
       centeredslides: true,
-      loop: true,
+      //loop: true,
       spaceBetween: 5,
       // autoplay:true,
     };
 
     ngOnInit(): void {
-      this.getPelis();
+
       this.currentUser = JSON.parse(localStorage.getItem('user'));
       if ((this.currentUser[0]['TipoUsuario']) == '0'){
         this.ocultar = true;
+        this.getPelis();
       }
-      if(this.flag == false){
-        this.flag = true;
-        this.ngOnInit();
-      }
+      this.getCartelera();
+
 
     }
 
@@ -54,8 +53,17 @@ export class PrincipalPage implements OnInit {
 
     }
 
+    getCartelera() {
+      this.service.getsCartelera().subscribe((data: any) => {
+        this.allcartelera = data;
+      });
+
+    }
+
     principal() {
-      this.route.navigate(['/principal']);
+      this.route.navigate(['/principal']).then(() => {
+        window.location.reload();
+      });
     }
 
     perfil() {
@@ -71,11 +79,32 @@ export class PrincipalPage implements OnInit {
     }
 
     pelicula(idPelicula: any){
-      this.route.navigate(['/pelicula',idPelicula]);
+
+        this.route.navigate(['/pelicula',idPelicula]).then(() => {
+          window.location.reload();
+        });
+
+
+    }
+    goCartelera(){
+      this.route.navigate(['/seleccionaragregar']).then(() => {
+        window.location.reload();
+      });
+    }
+
+    cartelera(idPelicula: any){
+      if(this.ocultar == false){
+        this.route.navigate(['/pelicula',idPelicula]).then(() => {
+          window.location.reload();
+        });
+      }
+
     }
 
     agregarPelicula(){
-      this.route.navigate(['/crearpelicula']);
+      this.route.navigate(['/crearpelicula']).then(() => {
+        window.location.reload();
+      });
     }
 
 

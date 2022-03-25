@@ -1,7 +1,7 @@
 
 <ion-content [fullscreen]="true" >
-
-  <ion-slides  [options]="option"  class="ion-margin-top" >
+  <ion-label *ngIf="ocultar">Peliculas Activas:</ion-label>
+  <ion-slides  [options]="option"  class="ion-margin-top" *ngIf="ocultar" >
 
     <ion-slide *ngFor="let item of allmovies">
 
@@ -12,7 +12,7 @@
             <ion-card-header>
               <ion-card-subtitle>Pelicula: </ion-card-subtitle>
               <ion-card-title>{{ item.Titulo }}</ion-card-title>
-                Sus generos son: {{ item.Director }}
+                Sus generos son: {{ item.Generos }}
             </ion-card-header>
 
         </ion-card-header>
@@ -23,10 +23,35 @@
 
   </ion-slides>
 
+    <ion-label >Cartelera:</ion-label>
+    <ion-slides  [options]="option"  class="ion-margin-top" >
 
-  <ion-item >
-    <ion-button (click)="agregarPelicula()" *ngIf="ocultar">Agregar Pelicula</ion-button>
-  </ion-item>
+      <ion-slide *ngFor="let item of allcartelera">
+        <ion-card  (click)="cartelera(item.idPelicula)">
+          <img src={{item.URL}}>
+
+          <ion-card-header >
+              <ion-card-header>
+                <ion-card-subtitle>Pelicula: </ion-card-subtitle>
+                <ion-card-title>{{ item.Titulo }}</ion-card-title>
+                  Sus generos son: {{ item.Generos }}
+              </ion-card-header>
+
+          </ion-card-header>
+        </ion-card>
+
+
+      </ion-slide>
+
+    </ion-slides>
+    <ion-item >
+      <ion-label>Agregar:</ion-label>
+      <ion-button (click)="agregarPelicula()" *ngIf="ocultar">Pelicula</ion-button>
+      <ion-button (click)="goCartelera()" *ngIf="ocultar">Cartelera</ion-button>
+    </ion-item>
+
+
+
 
 
 

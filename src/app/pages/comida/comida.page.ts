@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
@@ -23,34 +24,63 @@ export class ComidaPage implements OnInit {
     if ((this.currentUser[0]['TipoUsuario']) == '0'){
       this.ocultar = true;
     }
+    this.getComida();
   }
       // eslint-disable-next-line @typescript-eslint/member-ordering
       option = {
         slidesPerView: 1.5,
         centeredslides: true,
-        loop: true,
+        //loop: true,
         spaceBetween: 5,
         // autoplay:true,
       };
 
-  comprar() {
-    this.route.navigate(['/compra-comida',0]);
+
+  getComida(){
+    this.service.getscomida().subscribe((data: any) => {
+      this.allcomida = data;
+    });
+  }
+
+  comprar(id: any) {
+    if(this.ocultar == true){
+      this.route.navigate(['/compra-comida',id]).then(() => {
+        window.location.reload();
+      });
+    }
+    else{
+      this.route.navigate(['/cantidadcomida',id]).then(() => {
+        window.location.reload();
+      });
+    }
+
   }
 
   principal() {
-    this.route.navigate(['/principal']);
+    this.route.navigate(['/principal']).then(() => {
+      window.location.reload();
+    });
   }
 
   perfil() {
-    this.route.navigate(['/perfil']);
+    this.route.navigate(['/perfil']).then(() => {
+      window.location.reload();
+    });
   }
 
   comida() {
-    this.route.navigate(['/comida']);
+    this.route.navigate(['/comida']).then(() => {
+      window.location.reload();
+    });
   }
 
   agregarComida(){
-    this.route.navigate(['/crearcomida']);
+    this.route.navigate(['/crearcomida']).then(() => {
+      window.location.reload();
+    });
+  }
+  clientes() {
+    this.route.navigate(['/clientes']);
   }
 
 }

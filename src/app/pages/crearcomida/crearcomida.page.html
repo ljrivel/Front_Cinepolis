@@ -8,12 +8,13 @@
 
   <div [formGroup]="registerForm">
     <p></p>
-    <ion-input placeholder="Nombre Pelicula " class="primary-input" formControlName="Nombre" > </ion-input>
-    <ion-input placeholder="Cantidad Disponible " class="primary-input" formControlName="CantidadDisponible" > </ion-input>
+    <ion-input placeholder="Nombre Producto" class="primary-input" formControlName="Nombre" > </ion-input>
+    <ion-input placeholder="Cantidad Disponible " class="primary-input" formControlName="CantidadEnStock" > </ion-input>
     <ion-input placeholder="Precio producto " class="primary-input" formControlName="Precio" > </ion-input>
+    <ion-input placeholder="URL" class="primary-input" formControlName="URL" > </ion-input>
     <ion-item  class="primary-input" >
-      <ion-label >Tipo Comida</ion-label>
-      <ion-select placeholder="Selecciona" formControlName="EsquemaVacunacion" >
+      <ion-label >Tipo Producto</ion-label>
+      <ion-select placeholder="Selecciona" formControlName="TipoProducto" >
         <ion-select-option value="0" >Combo</ion-select-option >
         <ion-select-option value="1" >Bebida</ion-select-option>
         <ion-select-option value="2" >Alimento</ion-select-option>
@@ -22,7 +23,7 @@
 
 
       <ion-button>Cancelar</ion-button>
-      <ion-button [disabled]="!registerForm.valid" >Crear</ion-button>
+      <ion-button [disabled]="!registerForm.valid" (click)="crear()" >Crear</ion-button>
 
   </div>
 

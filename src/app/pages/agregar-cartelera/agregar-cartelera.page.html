@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>agregarCartelera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [formGroup]="registerForm">
+    <p></p>
+    <ion-item  class="primary-input" >
+      <ion-label >Sala asignar: </ion-label>
+      <ion-select placeholder="Select One" formControlName="sala" >
+        <ion-select-option value="1" >Sala 1</ion-select-option >
+        <ion-select-option value="2" >Sala 2</ion-select-option>
+        <ion-select-option value="3" >Sala 3</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+  <ion-input [value]="dateValue2"></ion-input>
+  <ion-button fill="clear" id="open-date-input-2">
+    <ion-icon icon="calendar"></ion-icon>
+  </ion-button>
+  <ion-popover trigger="open-date-input-2" show-backdrop="false">
+    <ng-template>
+      <ion-datetime
+        #popoverDatetime2
+        presentation="date"
+        (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"
+      ></ion-datetime>
+    </ng-template>
+  </ion-popover>
+  </ion-item>
+
+  </div>
+
+</ion-content>

@@ -1,10 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>compraComida</ion-title>
+    <ion-title>Cantidad de Producto a Comprar</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  se compra la comida estilo la compra de tickets
+<ion-content *ngFor="let item of producto">
+  <ion-card >
+    <img src={{item.URL}}>
+  </ion-card>
+
+  <h4>Nombre: {{item.Nombre}}</h4>
+  <h4>Cantidad: {{item.CantidadEnStock}}</h4>
+  <h4>Precio: {{item.Precio}}</h4>
+
+
+  <ion-button  (click)="modificar()" >
+    Modificar
+  </ion-button>
+  <ion-button  (click)="eliminar()" >
+    Eliminar
+  </ion-button>
+  <ion-button  (click)="cancelar()" >
+    Cancelar
+  </ion-button>
+
 
 </ion-content>

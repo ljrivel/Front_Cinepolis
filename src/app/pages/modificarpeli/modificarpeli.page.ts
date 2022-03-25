@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable eqeqeq */
@@ -16,7 +17,6 @@ export class ModificarpeliPage implements OnInit {
   infoPeli: any;
   movie: any;
   idpelicula: any;
-  cargado = false;
   registerForm: FormGroup;
 
   constructor(
@@ -28,9 +28,7 @@ export class ModificarpeliPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.cargado == false){
       this.idpelicula = this.activatedRoute.snapshot.paramMap.get('id');
-      this.cargado = true;
       this.getPelicula();
       this.registerForm = this.formBuilder.group({
         Titulo: ['', Validators.required],
@@ -44,7 +42,7 @@ export class ModificarpeliPage implements OnInit {
         Duracion: ['', [Validators.required]],
         Activo: ['1', Validators.required],
       });
-    }
+
   }
 
 
@@ -83,7 +81,7 @@ async modificacionExitoso() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'Modificacion Exitosa',
-    message: 'Usted se dirigira al menu de clientes.',
+    message: 'Usted se dirigira al menu de peliculas.',
     buttons: [
       {
         text: 'OK',
