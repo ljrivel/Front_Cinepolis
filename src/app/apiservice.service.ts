@@ -30,6 +30,10 @@ export class ApiserviceService {
     localStorage.setItem('cantidadtickets', JSON.stringify([]));
   }
 
+  resetCantidadTickets(){
+    localStorage.setItem('cantidadtickets', JSON.stringify([]));
+  }
+
   setCantidadTickets(data: any) {
     localStorage.setItem('cantidadtickets', JSON.stringify(data));
   }
