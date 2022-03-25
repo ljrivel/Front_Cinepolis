@@ -1,3 +1,5 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from './../../apiservice.service';
@@ -33,9 +35,67 @@ export class AgregarCarteleraPage implements OnInit {
     });
   }
   formatDate(value: string) {
-
+    console.log(value);
+    this.registerForm.controls['fecha'].setValue(value);
     return format(parseISO(value), 'MMM dd yyyy');
   }
 
+  cancelar(){
+    this.route.navigate(['/principal']).then(() => {
+      window.location.reload();
+    });
+  }
+
+  agregar(){
+    this.service.AgregarCartelera(this.registerForm.value).subscribe(
+      (data) => {
+        this.agregadoExitoso();
+      },
+      (error) => {
+
+        this.agregadoFallida();
+      }
+    );
+  }
+
+  async agregadoExitoso() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Agregado Exitosa',
+      message: 'Usted se dirigira al menu de peliculas.',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+          handler: (blah) => {
+            this.route.navigate(['/principal']).then(() => {
+              window.location.reload();
+            });
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+  async agregadoFallida() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Agregado Fallida',
+      message: 'ha ocurrido un error vuelva a intentarlo',
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'secondary',
+          id: 'ok-button',
+        }
+      ]
+    });
+    await alert.present();
+
+  }
 
 }

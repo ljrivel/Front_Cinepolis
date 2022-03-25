@@ -1,3 +1,4 @@
+import { AgregarCarteleraPage } from './pages/agregar-cartelera/agregar-cartelera.page';
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient } from '@angular/common/http';
@@ -105,6 +106,10 @@ export class ApiserviceService {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/GetUser', {
       Usuario
     });
+  }
+
+  AgregarCartelera(Usuario: any): Observable<any> {
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/addcartelera',Usuario);
   }
 
   getUsers(): Observable<any> {

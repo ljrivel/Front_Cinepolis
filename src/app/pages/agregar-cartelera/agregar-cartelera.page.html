@@ -25,12 +25,16 @@
     <ng-template>
       <ion-datetime
         #popoverDatetime2
-        presentation="date"
+        presentation="time-date"
         (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"
       ></ion-datetime>
     </ng-template>
   </ion-popover>
   </ion-item>
+
+
+  <ion-button (click)="cancelar()">Cancelar</ion-button>
+  <ion-button (click)="agregar()">Agregar</ion-button>
 
   </div>
 
