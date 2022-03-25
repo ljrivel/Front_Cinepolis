@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
               this.service.setUser(data2);
             }
           );
+          this.service.resetAll();
           this.loginExitoso();
 
         }

@@ -44,7 +44,7 @@
       </ion-slide>
 
     </ion-slides>
-    <ion-item >
+    <ion-item *ngIf="ocultar">
       <ion-label>Agregar:</ion-label>
       <ion-button (click)="agregarPelicula()" *ngIf="ocultar">Pelicula</ion-button>
       <ion-button (click)="goCartelera()" *ngIf="ocultar">Cartelera</ion-button>

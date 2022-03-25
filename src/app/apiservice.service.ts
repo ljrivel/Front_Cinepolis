@@ -10,14 +10,31 @@ import { Observable,Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiserviceService {
-  private currentUser = new Subject<boolean>();
+
 
   constructor(private http: HttpClient){}
 
+
+  //localstorage
   setUser(data: any) {
     localStorage.setItem('user', JSON.stringify(data));
-    this.currentUser.next(data);
   }
+
+  setProductos(data: any) {
+    localStorage.setItem('compras', JSON.stringify(data));
+  }
+
+
+  resetAll() {
+    localStorage.setItem('compras', JSON.stringify([]));
+    localStorage.setItem('cantidadtickets', JSON.stringify([]));
+  }
+
+  setCantidadTickets(data: any) {
+    localStorage.setItem('cantidadtickets', JSON.stringify(data));
+  }
+
+  //Api
 
   getsactor(): Observable<any> {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/getsactor');

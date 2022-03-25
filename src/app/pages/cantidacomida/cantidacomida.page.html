@@ -4,12 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor="let item of producto" >
+<ion-content *ngFor="let item of producto">
+  <ion-card  >
     <img src={{item.URL}}>
   </ion-card>
 
   <p></p>
+  <h1> {{item.Nombre}} </h1>
   <ion-item>
     <ion-button slot="start" fill="outline" (click)="less()">
       -
@@ -22,6 +23,11 @@
       +
     </ion-button>
   </ion-item>
+  <p></p>
+  <ion-button (click)="comprar()" >
+    Comprar
+  </ion-button>
+
 
 
 </ion-content>

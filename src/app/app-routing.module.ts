@@ -68,7 +68,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/infocomida/infocomida.module').then( m => m.InfocomidaPageModule)
   },
   {
-    path: 'cantidacomida/:id',
+    path: 'cantidadcomida/:id',
     loadChildren: () => import('./pages/cantidacomida/cantidacomida.module').then( m => m.CantidacomidaPageModule)
   },
   {
