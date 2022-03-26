@@ -34,6 +34,16 @@ export class PrincipalPage implements OnInit {
       // autoplay:true,
     };
 
+       // eslint-disable-next-line @typescript-eslint/member-ordering
+       option2 = {
+        slidesPerView: 1.5,
+        centeredslides: true,
+        loop: true,
+        spaceBetween: 5,
+        // autoplay:true,
+      };
+
+
     ngOnInit(): void {
 
       this.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -92,8 +102,9 @@ export class PrincipalPage implements OnInit {
       });
     }
 
-    cartelera(idPelicula: any){
+    cartelera(idPelicula: any,idCartelera: any){
       if(this.ocultar == false){
+        this.service.setCartelera(idCartelera);
         this.route.navigate(['/pelicula',idPelicula]).then(() => {
           window.location.reload();
         });

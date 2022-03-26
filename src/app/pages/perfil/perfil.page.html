@@ -1,19 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-title *ngFor="let item of usuario">Bienvenid@: {{item.Nombre}} {{item.Apellido1}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-label  >Peliculas Activas:</ion-label>
+  <ion-slides  [options]="option"  class="ion-margin-top" >
 
-Info del usuario
+    <ion-slide *ngFor="let item of productos">
+
+      <ion-card  (click)="pelicula(item.idPelicula)">
+        <img src={{item.URL}}>
+
+            <ion-card-header>
+              <ion-card-title>{{ item.Titulo }}</ion-card-title>
+            </ion-card-header>
+
+      </ion-card>
+
+    </ion-slide>
+  </ion-slides>
 
 
+  <ion-tabs >
+    <ion-tab-bar slot="bottom">
 
-__________________
+      <ion-tab-button  (click)="comida()">
+        <ion-icon name="ticket"></ion-icon>
+        <ion-label>Comidas</ion-label>
+      </ion-tab-button>
 
-historial
+      <ion-tab-button (click)="principal()">
+        <ion-icon name="videocam"></ion-icon>
+        <ion-label>Peliculas</ion-label>
+      </ion-tab-button>
 
+
+      <ion-tab-button  (click)="perfil()" >
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>

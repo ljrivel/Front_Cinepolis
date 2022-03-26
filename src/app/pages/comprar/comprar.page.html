@@ -24,86 +24,83 @@
   </ul>
 
   <div class="container">
-    <div class="screen"></div>
     <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
+      <div *ngFor="let item of fila1">
+        <div class={{item.Estado}} (click)="change(item.Numero)"> {{item.Numero}}</div>
+
+      </div>
     </div>
 
-    <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat occupied"></div>
-      <div class="seat occupied"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila2">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
     </div>
 
-    <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat selected"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat occupied"></div>
-      <div class="seat occupied"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
+    <div class="row" >
+      <div *ngFor="let item of fila3">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
     </div>
 
-    <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila4">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
     </div>
 
-    <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat occupied"></div>
-      <div class="seat occupied"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
+    <div class="row" >
+      <div *ngFor="let item of fila5">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
     </div>
 
-    <div class="row">
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class="seat occupied"></div>
-      <div class="seat occupied"></div>
-      <div class="seat occupied"></div>
-      <div class="seat"></div>
-      <div class="seat"></div>
-      <div class={{color}} (click)="p(color)"></div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila6">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
     </div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila7">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
+    </div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila8">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
+    </div>
+
+
+    <div class="row" >
+      <div *ngFor="let item of fila9">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
+    </div>
+
+    <div class="row" >
+      <div *ngFor="let item of fila10">
+        <div class={{item.Estado}} (click)="change(item.Numero)" >{{item.Numero}}</div>
+
+      </div>
+    </div>
+
+
+
   </div>
-
 
 
 </ion-content>

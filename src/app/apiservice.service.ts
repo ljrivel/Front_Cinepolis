@@ -19,6 +19,9 @@ export class ApiserviceService {
   setUser(data: any) {
     localStorage.setItem('user', JSON.stringify(data));
   }
+  setCartelera(data: any) {
+    localStorage.setItem('id', JSON.stringify(data));
+  }
 
   setProductos(data: any) {
     localStorage.setItem('compras', JSON.stringify(data));
@@ -136,4 +139,17 @@ export class ApiserviceService {
   getUsers(): Observable<any> {
     return this.http.get('https://nodejs-api-cinepolis.herokuapp.com/GetUsers');
   }
+
+  getAsientosLibres(id: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/asientoslibres',{
+      id
+    });
+  }
+
+  getAsientos(id: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/asientosCartelera',{
+      id
+    });
+  }
+
 }

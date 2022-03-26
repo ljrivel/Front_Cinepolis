@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiserviceService } from './../../apiservice.service';
 import { AlertController } from '@ionic/angular';
-import { ca } from 'date-fns/locale';
+
 
 @Component({
   selector: 'app-cantidacomida',
@@ -77,7 +77,8 @@ export class CantidacomidaPage implements OnInit {
 
     if(this.existe == false){
       const total = this.cantidad * this.producto[0].Precio;
-      const Producto ={ Producto: this.producto[0].Nombre, TipoProducto: 'Producto' , Cantidad: this.cantidad , Precio: total};
+      const url = this.producto[0].URL;
+      const Producto ={ Producto: this.producto[0].Nombre, TipoProducto: 'Producto' , Cantidad: this.cantidad , Precio: total,URL: url};
       this.carrito.push(Producto);
       this.service.setProductos(this.carrito);
     }

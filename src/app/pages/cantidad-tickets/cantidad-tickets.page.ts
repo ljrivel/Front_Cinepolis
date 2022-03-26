@@ -23,6 +23,7 @@ export class CantidadTicketsPage implements OnInit {
   disponibles: any;
   ocultarNinos = false;
   movie: any;
+  idCartelera: any;
 
 
   constructor(
@@ -33,8 +34,11 @@ export class CantidadTicketsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.idCartelera= JSON.parse(localStorage.getItem('id'));
     this.idPelicula = this.activatedRoute.snapshot.paramMap.get('id');
     this.getPelicula();
+    this.asientosLibres();
+
 
 
   }
@@ -52,8 +56,15 @@ getPelicula(){
 
 }
 
+asientosLibres(){
+  this.service.getAsientosLibres(this.idCartelera).subscribe((data: any) => {
+
+    this.disponibles= data[0][0].CantidadDisponible;
+  });
+}
+
 addTicketsAdultos(){
-  if(this.total < 100){
+  if(this.total < this.disponibles){
     this.ticketAdultos ++;
     this.total ++;
   }
@@ -72,7 +83,7 @@ lessTicketsAdultos(){
 }
 
 addTicketsAdultosM(){
-  if(this.total < 100){
+  if(this.total < this.disponibles){
     this.ticketAdultosMayor ++;
     this.total ++;
   }
@@ -92,7 +103,7 @@ lessTicketsAdultosM(){
 }
 
 addTicketsNinos(){
-  if(this.total < 100){
+  if(this.total < this.disponibles){
     this.ticketNinos ++;
     this.total ++;
   }
@@ -118,9 +129,9 @@ comprar() {
   const precioAmayor= 3000 * this.ticketAdultosMayor;
   const precioTotal = precioAmayor + precioGeneral + precioNinos;
 
-
   const compra = {TicketAdultos: this.ticketAdultosMayor, TicketsNinos: this.ticketNinos, TicketsGeneral: this.ticketAdultos
-    , Precio: precioTotal, Total: this.total};
+    , Precio: precioTotal, Total: this.total, Nombre: this.movie[0].Titulo, URL:this.movie[0].URL};
+
 
   this.service.setCantidadTickets(compra);
   this.route.navigate(['/comprar']);
