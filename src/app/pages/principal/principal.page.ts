@@ -77,7 +77,9 @@ export class PrincipalPage implements OnInit {
     }
 
     perfil() {
-      this.route.navigate(['/perfil']);
+      this.route.navigate(['/perfil']).then(() => {
+        window.location.reload();
+      });
     }
 
     comida() {

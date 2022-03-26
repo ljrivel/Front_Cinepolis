@@ -78,7 +78,8 @@ export class CantidacomidaPage implements OnInit {
     if(this.existe == false){
       const total = this.cantidad * this.producto[0].Precio;
       const url = this.producto[0].URL;
-      const Producto ={ Producto: this.producto[0].Nombre, TipoProducto: 'Producto' , Cantidad: this.cantidad , Precio: total,URL: url};
+      const Producto ={ Producto: this.producto[0].Nombre, TipoProducto: 'Producto' , Cantidad: this.cantidad , Precio: total,
+      URL: url, id: this.producto[0].idProducto};
       this.carrito.push(Producto);
       this.service.setProductos(this.carrito);
     }
@@ -90,6 +91,12 @@ export class CantidacomidaPage implements OnInit {
     }
     this.ready();
 
+  }
+
+  cancelar(){
+    this.route.navigate(['/comida']).then(() => {
+      window.location.reload();
+    });
   }
 
   async error() {

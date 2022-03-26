@@ -193,7 +193,12 @@ export class ComprarPage implements OnInit {
     const total = this.infoTickets['Precio'];
     const nombre = this.infoTickets['Nombre'];
     const url = this.infoTickets['URL'];
-    const Producto ={ Producto: nombre, TipoProducto: 'Pelicula' , Cantidad: this.Maximo, Precio: total, Asientos: asientosPasar,URL: url};
+    const ticketsG = this.infoTickets['TicketsGeneral'];
+    const ticketsA = this.infoTickets['TicketAdultos'];
+    const ticketsN = this.infoTickets['TicketsNinos'];
+    const cartelera = this.infoTickets['idCartelera'];
+    const Producto ={ Producto: nombre, TipoProducto: 'Pelicula' , Cantidad: this.Maximo, Precio: total, Asientos: asientosPasar,
+    URL: url, TicketAdultos:ticketsA, TicketsGeneral:ticketsG,TicketsNinos: ticketsN,idCartelera:cartelera};
     this.carrito.push(Producto);
     this.service.setProductos(this.carrito);
     this.service.resetCantidadTickets();

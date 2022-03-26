@@ -91,6 +91,14 @@ const routes: Routes = [
     path: 'agregar-cartelera/:id',
     loadChildren: () => import('./pages/agregar-cartelera/agregar-cartelera.module').then( m => m.AgregarCarteleraPageModule)
   },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'historial-detallado/:id',
+    loadChildren: () => import('./pages/historial-detallado/historial-detallado.module').then( m => m.HistorialDetalladoPageModule)
+  },
 
 ];
 

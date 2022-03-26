@@ -6,22 +6,60 @@
 
 <ion-content>
 
-  <ion-label  >Peliculas Activas:</ion-label>
+  <ion-label  >Carrito de compras:</ion-label>
   <ion-slides  [options]="option"  class="ion-margin-top" >
 
-    <ion-slide *ngFor="let item of productos">
+    <ion-slide *ngFor="let item of alimento">
 
-      <ion-card  (click)="pelicula(item.idPelicula)">
+      <ion-card>
         <img src={{item.URL}}>
 
             <ion-card-header>
-              <ion-card-title>{{ item.Titulo }}</ion-card-title>
+              <ion-card-title>Producto: {{ item.Producto }}</ion-card-title>
+              <ion-card-subtitle>Cantidad: {{ item.Cantidad }}</ion-card-subtitle>
+              <ion-card-subtitle>Precio: {{ item.Precio }}</ion-card-subtitle>
             </ion-card-header>
+
+            <ion-button (click)="eliminar(item.Producto)"> Eliminar </ion-button>
+            <ion-button (click)="compra(item.Producto)"> Pagar</ion-button>
 
       </ion-card>
 
     </ion-slide>
+
+
+    <ion-slide *ngFor="let item of pelis">
+
+      <ion-card>
+        <img src={{item.URL}}>
+
+            <ion-card-header>
+              <ion-card-title>Boletos de: {{ item.Producto }}</ion-card-title>
+
+
+              <ion-card-subtitle>Tickets Ninos: {{ item.TicketsNinos }}</ion-card-subtitle>
+              <ion-card-subtitle>Tickets Generales: {{ item.TicketsGeneral }}</ion-card-subtitle>
+              <ion-card-subtitle>Tickets Adultos Mayores: {{ item.TicketsAdultos }}</ion-card-subtitle>
+              <ion-card-subtitle>Cantidad  tickets Totales: {{ item.Cantidad }}</ion-card-subtitle>
+              <ion-card-subtitle>Tickets Asientos: {{ item.Asientos }}</ion-card-subtitle>
+              <ion-card-subtitle>Precio Total: {{ item.Precio }}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-button (click)="eliminar(item.Producto)"> Eliminar </ion-button>
+            <ion-button (click)="compra(item.Producto)"> Pagar</ion-button>
+
+      </ion-card>
+
+
+    </ion-slide>
+
+
   </ion-slides>
+  <p></p>
+  <ion-item>
+    <ion-button (click)="historial()"> Ver Historial</ion-button>
+  </ion-item>
+
 
 
   <ion-tabs >

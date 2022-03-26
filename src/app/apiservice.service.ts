@@ -132,6 +132,7 @@ export class ApiserviceService {
     });
   }
 
+
   AgregarCartelera(Usuario: any): Observable<any> {
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/addcartelera',Usuario);
   }
@@ -152,4 +153,34 @@ export class ApiserviceService {
     });
   }
 
+  getHistorial(id: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/getHistorial',{
+      id
+    });
+  }
+
+  getCompra(id: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/getCompra',{
+      id
+    });
+  }
+
+  ComprarProductos(id: any,precio: any,productos: any,cantidad: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/compraproductos',{
+      id,
+      precio,
+      productos,
+      cantidad
+    });
+  }
+
+  ComprarBoletos(idU: any, idC: any,precio: any,boletos: any,cantidad: any): Observable<any>{
+    return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/compraboletos',{
+      idU,
+      idC,
+      precio,
+      boletos,
+      cantidad
+    });
+  }
 }

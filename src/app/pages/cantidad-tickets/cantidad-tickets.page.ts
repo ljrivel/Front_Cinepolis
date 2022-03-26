@@ -130,7 +130,7 @@ comprar() {
   const precioTotal = precioAmayor + precioGeneral + precioNinos;
 
   const compra = {TicketAdultos: this.ticketAdultosMayor, TicketsNinos: this.ticketNinos, TicketsGeneral: this.ticketAdultos
-    , Precio: precioTotal, Total: this.total, Nombre: this.movie[0].Titulo, URL:this.movie[0].URL};
+    , Precio: precioTotal, Total: this.total, Nombre: this.movie[0].Titulo, URL:this.movie[0].URL, idCartelera: this.idCartelera};
 
 
   this.service.setCantidadTickets(compra);

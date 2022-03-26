@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial sin detallar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides  [options]="option"  class="ion-margin-top" >
+
+    <ion-slide *ngFor="let item of historial">
+
+      <ion-card >
+            <ion-card-header>
+              <ion-card-title>Orden: {{ item.idCompra }}</ion-card-title>
+              <ion-card-subtitle>Pagado: {{ item.PrecioTotal }}</ion-card-subtitle>
+            </ion-card-header>
+
+      </ion-card>
+
+    </ion-slide>
+  </ion-slides>
+
+  <ion-item>
+    <ion-button (click)="volver()">
+      Regresar
+    </ion-button>
+  </ion-item>
+</ion-content>
