@@ -165,22 +165,24 @@ export class ApiserviceService {
     });
   }
 
-  ComprarProductos(id: any,precio: any,productos: any,cantidad: any): Observable<any>{
+  ComprarProductos(id: any,precio: any,productos: any,cantidad: any,pdf: any): Observable<any>{
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/compraproductos',{
       id,
       precio,
       productos,
-      cantidad
+      cantidad,
+      pdf
     });
   }
 
-  ComprarBoletos(idU: any, idC: any,precio: any,boletos: any,cantidad: any): Observable<any>{
+  ComprarBoletos(idU: any, idC: any,precio: any,boletos: any,cantidad: any,pdf: any): Observable<any>{
     return this.http.post('https://nodejs-api-cinepolis.herokuapp.com/compraboletos',{
       idU,
       idC,
       precio,
       boletos,
-      cantidad
+      cantidad,
+      pdf
     });
   }
 }

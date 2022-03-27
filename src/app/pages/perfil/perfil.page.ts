@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable object-shorthand */
 /* eslint-disable quote-props */
 /* eslint-disable @typescript-eslint/quotes */
@@ -70,11 +71,11 @@ export class PerfilPage implements OnInit {
     const tamano = 1;
     let format = '';
     format = format + info['id'] + ":" + info['Cantidad'];
-    console.log(this.usuario[0]['idUsuario'],info['Precio'],format,tamano);
 
-    //data.id,data.precio,data.productos,data.cantidad
+    const pdf = {Nombre: info['Producto'], Cantidad: info['Cantidad']+'',Precio: info['Precio']+'', Email: this.usuario[0]['Email'] };
 
-    this.service.ComprarProductos(this.usuario[0]['idUsuario'],info['Precio'],format,tamano).subscribe(
+
+    this.service.ComprarProductos(this.usuario[0]['idUsuario'],info['Precio'],format,tamano,pdf).subscribe(
       (data) => {
         if(data[0]['Mensaje'] != "Error: Cantidad mayor que disponibles"){
 
@@ -109,8 +110,16 @@ export class PerfilPage implements OnInit {
 
     const tamano =info['Asientos'].length;
     const boletos = this.formatBoletos(info['Asientos'],tamano);
+    let asientos = '';
+    for(let i =0; i < tamano; i++ ){
+      asientos = asientos +info['Asientos'][i] + " ";
+    }
 
-    this.service.ComprarBoletos(this.usuario[0]['idUsuario'],info['idCartelera'],info['Precio'],boletos,tamano).subscribe(
+    const pdf = {EntradaAdultos: info['TicketsGeneral']+'', EntradaMayores: info['TicketAdultos']+''
+    , EntradaNinos: info['TicketsNinos']+'',Asientos: asientos, PrecioTotal:info['Precio']+'', Email: this.usuario[0]['Email'] };
+
+
+    this.service.ComprarBoletos(this.usuario[0]['idUsuario'],info['idCartelera'],info['Precio'],boletos,tamano,pdf).subscribe(
       (data) => {
         if(data[0]['Mensaje'] != "Error: Un asiento no disponible"){
 

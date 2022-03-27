@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -64,6 +65,8 @@ cancelar(){
 }
 
 modificar(){
+
+  this.registerForm.controls['CantidadEnStock'].setValue(parseInt(this.registerForm.controls['CantidadEnStock'].value));
   this.service.changeProducto(this.registerForm.value).subscribe(
     (data) => {
       this.modificacionExitoso();
