@@ -15,6 +15,7 @@ export class ComidaPage implements OnInit {
   searchTerm: string;
   currentUser: any;
   allcomida: any;
+  tamano: any;
   textbuscar = '';
   constructor(
     private service: ApiserviceService,
@@ -41,6 +42,10 @@ export class ComidaPage implements OnInit {
   getComida(){
     this.service.getscomida().subscribe((data: any) => {
       this.allcomida = data;
+      this.tamano = data.length;
+      for(let i =0; i < this.tamano; i++){
+        this.tipo(data[i]['TipoProducto'],data[i]['idProducto']);
+      }
     });
   }
 
@@ -58,9 +63,18 @@ export class ComidaPage implements OnInit {
 
   }
 
+  getID(id: any){
+    for(let i =0; i < this.tamano; i++){
+      if(this.allcomida[i]['idProducto'] ==  id){
+        return i;
+      }
+    }
+  }
+
   tipo(type: any,id: any){
 
-    const ID = ((id - 4) / 10 ) ;
+    const ID = this.getID(id);
+
 
     if(type == 0){
       this.allcomida[ID]['TipoProducto'] = 'Combo';
@@ -74,7 +88,7 @@ export class ComidaPage implements OnInit {
     }
     else{
       this.allcomida[ID]['TipoProducto'] = 'Comida';
-      return  'Comida';
+       return  'Comida';
     }
   }
 
