@@ -29,6 +29,7 @@ export class CrearpeliculaPage implements OnInit {
       Actores: ['', [Validators.required]],
       Generos: ['', [Validators.required]],
       Duracion: ['', [Validators.required]],
+      Idiomas: ['', [Validators.required]],
       Activo: ['1', Validators.required],
     });
   }

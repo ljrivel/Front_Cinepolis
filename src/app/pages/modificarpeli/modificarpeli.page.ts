@@ -40,6 +40,7 @@ export class ModificarpeliPage implements OnInit {
         Actores: ['', [Validators.required]],
         Generos: ['', [Validators.required]],
         Duracion: ['', [Validators.required]],
+        Idiomas: ['', [Validators.required]],
         Activo: ['1', Validators.required],
       });
 
@@ -58,6 +59,7 @@ getPelicula(){
         this.registerForm.controls['Actores'].setValue(data[0].Actores);
         this.registerForm.controls['Generos'].setValue(data[0].Generos);
         this.registerForm.controls['Duracion'].setValue(data[0].Duracion);
+        this.registerForm.controls['Idiomas'].setValue(data[0].Idiomas);
     });
 }
 
